@@ -14,7 +14,7 @@ document.getElementById('downloadButton').addEventListener('click', () => {
     const progressText = document.getElementById('progressText');
   
     // Send a POST request to the backend to start the download
-    fetch('https://youtube-mp3-backend-v23e.onrender.com/download', {
+    fetch('https://youtube-mp3-backend-7bzt.onrender.com/download', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ document.getElementById('downloadButton').addEventListener('click', () => {
       .then((response) => {
         if (response.ok) {
           // Listen for progress updates
-          const eventSource = new EventSource('https://youtube-mp3-backend-v23e.onrender.com/progress');
+          const eventSource = new EventSource('https://youtube-mp3-backend-7bzt.onrender.com/progress');
   
           eventSource.onmessage = (e) => {
             const progress = parseFloat(e.data);
@@ -45,3 +45,4 @@ document.getElementById('downloadButton').addEventListener('click', () => {
         alert('An error occurred. Please try again later.');
       });
   });
+
