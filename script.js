@@ -21,28 +21,27 @@ document.getElementById('downloadButton').addEventListener('click', () => {
       },
       body: JSON.stringify({ videoUrl: videoUrl }),
     })
-    .then((response) => {
-      if (response.ok) {
-        // Listen for progress updates
-        const eventSource = new EventSource('https://youtube-mp3-backend-v23e.onrender.com/progress');
-        
-        eventSource.onmessage = (e) => {
-          const progress = parseFloat(e.data);
-          progressBar.value = progress;
-          progressText.textContent = `${progress}%`;
+      .then((response) => {
+        if (response.ok) {
+          // Listen for progress updates
+          const eventSource = new EventSource('https://youtube-mp3-backend-v23e.onrender.com/progress');
   
-          if (progress === 100) {
-            document.getElementById('completionMessage').style.display = 'block';
-            eventSource.close();
-          }
-        };
-      } else {
-        alert('Failed to start download!');
-      }
-    })
-    .catch((err) => {
-      console.error('Error:', err);
-      alert('An error occurred. Please try again later.');
-    });
+          eventSource.onmessage = (e) => {
+            const progress = parseFloat(e.data);
+            progressBar.value = progress;
+            progressText.textContent = `${progress}%`;
+  
+            if (progress === 100) {
+              document.getElementById('completionMessage').style.display = 'block';
+              eventSource.close();
+            }
+          };
+        } else {
+          alert('Failed to start download!');
+        }
+      })
+      .catch((err) => {
+        console.error('Error:', err);
+        alert('An error occurred. Please try again later.');
+      });
   });
-  
