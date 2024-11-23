@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube MP3 Downloader</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>YouTube MP3 Downloader</h1>
+    <p>Enter a YouTube URL to download it as MP3:</p>
+    
+    <!-- Form to input YouTube URL -->
+    <input type="text" id="videoUrl" placeholder="Enter YouTube video URL">
+    <button id="downloadButton">Download MP3</button>
+    
+    <!-- Progress bar for download -->
+    <div id="progressContainer" style="display:none;">
+      <p>Download Progress:</p>
+      <progress id="progressBar" value="0" max="100"></progress>
+      <p id="progressText">0%</p>
+    </div>
+
+    <div id="completionMessage" style="display:none;">
+      <p>Download Complete! 🎉</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
